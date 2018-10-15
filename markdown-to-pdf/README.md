@@ -29,6 +29,7 @@ The PDF file will be placed right next to the source file, e.g. _/path/to/file.p
 $ markdown-to-pdf /path/to/file-one.md /path/to/file-two.md /path/to/file-three.md
 ```
 
+
 ### Author
 
-**TODO**
+Original script by [@infinitesteps](https://github.com/infinitesteps)

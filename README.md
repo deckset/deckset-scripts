@@ -8,7 +8,7 @@ A collection of macOS command line scripts using AppleScript to control
 
 | Name | Description | Author |
 |---|---|--|
-| [Markdown to PDF](./markdown-to-pdf) | Convert a (list of) Deckset presentation(s) to PDF files | @username |
+| [Markdown to PDF](./markdown-to-pdf) | Convert a (list of) Deckset presentation(s) to PDF | [@infinitesteps](https://github.com/infinitesteps) |
 
 
 ## Contribute
