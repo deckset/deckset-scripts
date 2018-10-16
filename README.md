@@ -9,6 +9,7 @@ A collection of macOS command line scripts using AppleScript to control
 | Name | Description | Author |
 |---|---|--|
 | [Markdown to PDF](./markdown-to-pdf) | Convert a (list of) Deckset presentation(s) to PDF | [@infinitesteps](https://github.com/infinitesteps) |
+| [PechaKucha](./pecha-kucha) | Show every slide for 20s, then advance to the next one | [@chriseidhof](https://github.com/chriseidhof) |
 
 
 ## Contribute
