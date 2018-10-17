@@ -53,7 +53,7 @@ for FILE in "$@" ; do
             set md_file to POSIX file md_file
             set out_file to "$pdf_file"
             set out_file to POSIX file out_file
-            tell application "Deckset Private Beta"
+            tell application "Deckset"
                 activate
                 open file md_file
                 tell document 1

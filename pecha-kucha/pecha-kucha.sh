@@ -28,7 +28,7 @@ done
 
 osascript <<EOF
     repeat
-        tell application "Deckset Private Beta"
+        tell application "Deckset"
             tell document 1
                 set slideIndex to slideIndex + 1
             end tell
