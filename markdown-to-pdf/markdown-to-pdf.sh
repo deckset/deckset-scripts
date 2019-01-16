@@ -57,9 +57,7 @@ for FILE in "$@" ; do
     if [ $IGNORE_HIGHLIGHTS = 1 ]
     then
       cp $md_file $backup_file;
-      convert_file="${FILE%.*}.convert.md"
-      sed -E 's/\[.code-highlight.+]//g' $md_file > $convert_file
-      mv $convert_file $md_file
+      sed -i '' -E  's/\[.code-highlight.+]//g' $md_file
     fi
 
     osascript <<EOF
