@@ -8,22 +8,28 @@ show_usage() {
     echo "Options:"
     echo "  -f   Overwrite existing output files."
     echo "  -h   Print usage."
+    echo "  -c   Ignore Code Highlights."
 }
 
 OVERWRITE=0
+IGNORE_HIGHLIGHTS=0
 
-while getopts fh option
+while getopts fhc option
 do
     case "${option}"
     in
         f)
             OVERWRITE=1;
-            shift;;
+            ;;
+        c)
+            IGNORE_HIGHLIGHTS=1;
+            ;;
         h)
             show_usage;
             exit 0;
     esac
 done
+shift $((OPTIND - 1))
 
 if [ $# -eq 0 ]
 then
@@ -34,6 +40,7 @@ fi
 for FILE in "$@" ; do
     md_file="$(cd "$(dirname "$FILE")"; pwd)/$(basename "$FILE")"
     pdf_file="${FILE%.*}.pdf"
+    backup_file="${FILE%.*}.bak.md"
 
     if [ ! -e $md_file ]
     then
@@ -45,6 +52,14 @@ for FILE in "$@" ; do
     then
         echo "Error: output file $pdf_file exists. Please use -f option if you want to overwrite it."
         exit 3
+    fi
+
+    if [ $IGNORE_HIGHLIGHTS = 1 ]
+    then
+      cp $md_file $backup_file;
+      convert_file="${FILE%.*}.convert.md"
+      sed -E 's/\[.code-highlight.+]//g' $md_file > $convert_file
+      mv $convert_file $md_file
     fi
 
     osascript <<EOF
@@ -63,4 +78,13 @@ for FILE in "$@" ; do
             end tell
         end run
 EOF
+
+  if [ $IGNORE_HIGHLIGHTS = 1 ]
+  then
+    mv $backup_file $md_file
+  fi
+
 done
+
+
+#      sed -Ei 's/\[.code-highlight.+]//g' $md_file # > $convert_file
