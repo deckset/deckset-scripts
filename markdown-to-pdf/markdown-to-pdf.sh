@@ -7,23 +7,34 @@ show_usage() {
     echo ""
     echo "Options:"
     echo "  -f   Overwrite existing output files."
+    echo "  -s   Separate slides for all build steps (lists, code highlights)"
+    echo "  -p   Include presenter notes"
     echo "  -h   Print usage."
 }
 
 OVERWRITE=0
+PRINT_ALL_STEPS=false
+INCLUDE_PRESENTER_NOTES=false
 
-while getopts fh option
+while getopts fsph option
 do
     case "${option}"
     in
         f)
             OVERWRITE=1;
-            shift;;
+            ;;
+        s)
+            PRINT_ALL_STEPS=true;
+            ;;
+        p)
+            INCLUDE_PRESENTER_NOTES=true;
+            ;;
         h)
             show_usage;
             exit 0;
     esac
 done
+shift $((OPTIND - 1))
 
 if [ $# -eq 0 ]
 then
@@ -58,7 +69,7 @@ for FILE in "$@" ; do
                 open file md_file
                 tell document 1
                     activate
-                    export to out_file
+                    export to out_file printAllSteps $PRINT_ALL_STEPS includePresenterNotes $INCLUDE_PRESENTER_NOTES
                 end tell
             end tell
         end run
