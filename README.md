@@ -1,4 +1,4 @@
-# <img src="https://deckset.imgix.net/Deckset-Logo.png?auto=format&w=80" width="40" style="vertical-align: bottom;"> Deckset Scripts
+Deckset Scripts
 
 A collection of macOS command line scripts using AppleScript to control 
 [Deckset](https://www.deckset.com/) in smart ways.
