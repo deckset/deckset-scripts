@@ -1,4 +1,4 @@
-Deckset Scripts
+# Deckset Scripts
 
 A collection of macOS command line scripts using AppleScript to control 
 [Deckset](https://www.deckset.com/) in smart ways.
